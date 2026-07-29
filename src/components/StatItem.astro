@@ -17,15 +17,15 @@ const IconComponent = {
 }[icon.toLowerCase()] || Award;
 ---
 
-<div class="flex items-center gap-4 justify-center py-2 px-4 group">
-  <div class="w-12 h-12 rounded-full border border-gold/40 bg-navy-light flex items-center justify-center flex-shrink-0 group-hover:border-gold group-hover:bg-gold/20 transition-all duration-300">
-    <IconComponent class="h-6 w-6 text-gold" stroke-width="1.75" />
+<div class="flex flex-col sm:flex-row items-center justify-center text-center sm:text-left gap-3 sm:gap-4 p-4 sm:p-5 bg-navy-light/40 border border-gray-800/60 hover:border-gold/40 transition-all duration-300 group">
+  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gold/40 bg-navy flex items-center justify-center flex-shrink-0 group-hover:border-gold group-hover:bg-gold/20 transition-all duration-300">
+    <IconComponent class="h-5 w-5 sm:h-6 sm:w-6 text-gold" stroke-width="1.75" />
   </div>
-  <div class="flex flex-col text-left">
-    <span class="text-3xl lg:text-4xl font-extrabold font-heading text-white leading-none tracking-tight mb-1 group-hover:text-gold transition-colors">
+  <div class="flex flex-col">
+    <span class="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-white leading-none tracking-tight mb-1 group-hover:text-gold transition-colors">
       {number}
     </span>
-    <span class="text-[0.65rem] lg:text-xs font-bold text-gray-300 uppercase tracking-widest leading-tight">
+    <span class="text-[0.6rem] sm:text-[0.65rem] lg:text-xs font-bold text-gray-300 uppercase tracking-widest leading-tight">
       {label}
     </span>
   </div>
