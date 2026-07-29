@@ -24,7 +24,7 @@ const IconComponent = {
 }[icon.toLowerCase()] || Settings;
 ---
 
-<div class="bg-white shadow-lg flex flex-col h-full group border border-gray-100">
+<article class="bg-white shadow-lg flex flex-col h-full group border border-gray-100">
   <div class="relative h-48 overflow-hidden">
     <Image src={image} alt={title} width={400} height={250} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
     <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition-colors"></div>
@@ -42,4 +42,4 @@ const IconComponent = {
       </a>
     )}
   </div>
-</div>
+</article>

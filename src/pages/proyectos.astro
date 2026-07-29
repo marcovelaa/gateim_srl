@@ -44,7 +44,7 @@ const description = "Galería de proyectos ejecutados por GATEIM SRL en mantenim
     <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {proyectosData.map(proyecto => (
-          <div class="bg-white overflow-hidden shadow-md group border border-gray-100 flex flex-col">
+          <article class="bg-white overflow-hidden shadow-md group border border-gray-100 flex flex-col">
             <div class="relative h-48 overflow-hidden">
               <Image src={proyecto.image} alt={proyecto.title} width={400} height={250} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
             </div>
@@ -54,7 +54,7 @@ const description = "Galería de proyectos ejecutados por GATEIM SRL en mantenim
                 <p class="text-xs text-gray-600 leading-relaxed">{proyecto.description}</p>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>
