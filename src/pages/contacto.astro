@@ -3,29 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FaqSection from '../components/FaqSection.astro';
 import { Phone, Mail, MapPin, Clock } from 'lucide-astro';
+import faqsData from '../data/faqs.json';
 
 const title = "Contacto | GATEIM SRL";
 const description = "Póngase en contacto con GATEIM SRL. Solicite cotizaciones o información sobre nuestros servicios industriales en Santa Cruz, Bolivia.";
 
-const faqs = [
-  {
-    question: "¿Dónde están ubicadas sus oficinas?",
-    answer: "Nuestra oficina central y talleres se encuentran en Santa Cruz de la Sierra, Bolivia. Realizamos trabajos en todo el territorio nacional según los requerimientos del proyecto."
-  },
-  {
-    question: "¿Cómo puedo solicitar una visita técnica?",
-    answer: "Puede solicitar una visita técnica completando el formulario de contacto, llamando a nuestros teléfonos o enviando un correo electrónico. Nuestro equipo coordinará una inspección en planta."
-  },
-  {
-    question: "¿Cuánto tiempo demora la elaboración de un presupuesto?",
-    answer: "Para servicios estándar, entregamos la cotización en 24-48 horas. Para proyectos de montaje complejo o paradas de planta, el tiempo dependerá de la visita técnica y el alcance del trabajo."
-  }
-];
+const faqs = faqsData.slice(0, 3);
 ---
 
 <BaseLayout title={title} description={description}>
   <!-- Breadcrumb JSON-LD -->
-  <script type="application/ld+json">
+  <script type="application/ld+json" is:inline>
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",

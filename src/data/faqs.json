@@ -1,0 +1,30 @@
+[
+  {
+    "question": "¿Dónde están ubicadas sus oficinas?",
+    "answer": "Nuestra oficina central y talleres se encuentran en Santa Cruz de la Sierra, Bolivia. Realizamos trabajos en todo el territorio nacional según los requerimientos del proyecto."
+  },
+  {
+    "question": "¿Cómo puedo solicitar una visita técnica?",
+    "answer": "Puede solicitar una visita técnica completando el formulario de contacto, llamando a nuestros teléfonos o enviando un correo electrónico. Nuestro equipo coordinará una inspección en planta."
+  },
+  {
+    "question": "¿Cuánto tiempo demora la elaboración de un presupuesto?",
+    "answer": "Para servicios estándar, entregamos la cotización en 24-48 horas. Para proyectos de montaje complejo o paradas de planta, el tiempo dependerá de la visita técnica y el alcance del trabajo."
+  },
+  {
+    "question": "¿Atienden emergencias fuera de horario de oficina?",
+    "answer": "Sí, contamos con soporte técnico 24/7 para nuestros clientes con contrato de mantenimiento activo, asegurando la menor cantidad de tiempo inactivo posible ante fallas críticas."
+  },
+  {
+    "question": "¿Tienen certificaciones para trabajos de soldadura?",
+    "answer": "Absolutamente. Todos nuestros soldadores cuentan con certificaciones vigentes (ASME IX, API 1104) para realizar trabajos de soldadura estructural y tuberías de alta presión."
+  },
+  {
+    "question": "¿Ofrecen garantías por los trabajos de mantenimiento?",
+    "answer": "Todos nuestros servicios incluyen una garantía técnica documentada. Los plazos de cobertura varían según el tipo de intervención y los repuestos utilizados."
+  },
+  {
+    "question": "¿Pueden realizar trabajos en paradas de planta programadas?",
+    "answer": "Sí, somos especialistas en planificación y ejecución de mantenimiento durante paradas de planta, aportando cuadrillas completas trabajando en múltiples turnos para cumplir los plazos."
+  }
+]

@@ -31,7 +31,7 @@ const schema = addSchema ? {
   <h2 class="text-3xl font-extrabold font-heading text-navy mb-8 text-center">{title}</h2>
   
   <div class="space-y-4" itemscope itemtype={addSchema ? "https://schema.org/FAQPage" : undefined}>
-    {items.map((item, index) => (
+    {items.map(item => (
       <details class="group border border-gray-200 rounded-lg bg-white" itemscope itemprop="mainEntity" itemtype={addSchema ? "https://schema.org/Question" : undefined}>
         <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-lg text-navy hover:text-gold transition-colors">
           <span itemprop="name">{item.question}</span>
@@ -49,7 +49,7 @@ const schema = addSchema ? {
   </div>
 
   {addSchema && (
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
   )}
 </div>
 

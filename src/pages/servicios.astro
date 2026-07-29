@@ -4,28 +4,12 @@ import ServiceCard from '../components/ServiceCard.astro';
 import FaqSection from '../components/FaqSection.astro';
 
 import serviciosData from '../data/servicios.json';
+import faqsData from '../data/faqs.json';
 
 const title = "Servicios Industriales | GATEIM SRL";
 const description = "Ofrecemos mantenimiento, montaje, fabricación, soldadura y automatización para plantas industriales. Revise nuestro catálogo de servicios técnicos.";
 
-const faqs = [
-  {
-    question: "¿Atienden emergencias fuera de horario de oficina?",
-    answer: "Sí, contamos con soporte técnico 24/7 para nuestros clientes con contrato de mantenimiento activo, asegurando la menor cantidad de tiempo inactivo posible ante fallas críticas."
-  },
-  {
-    question: "¿Tienen certificaciones para trabajos de soldadura?",
-    answer: "Absolutamente. Todos nuestros soldadores cuentan con certificaciones vigentes (ASME IX, API 1104) para realizar trabajos de soldadura estructural y tuberías de alta presión."
-  },
-  {
-    question: "¿Ofrecen garantías por los trabajos de mantenimiento?",
-    answer: "Todos nuestros servicios incluyen una garantía técnica documentada. Los plazos de cobertura varían según el tipo de intervención y los repuestos utilizados."
-  },
-  {
-    question: "¿Pueden realizar trabajos en paradas de planta programadas?",
-    answer: "Sí, somos especialistas en planificación y ejecución de mantenimiento durante paradas de planta, aportando cuadrillas completas trabajando en múltiples turnos para cumplir los plazos."
-  }
-];
+const faqs = faqsData.slice(3);
 
 const serviceSchemas = serviciosData.map(service => ({
   "@context": "https://schema.org",
@@ -45,11 +29,11 @@ const serviceSchemas = serviciosData.map(service => ({
 
 <BaseLayout title={title} description={description}>
   {serviceSchemas.map(schema => (
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
   ))}
 
   <!-- Breadcrumb JSON-LD -->
-  <script type="application/ld+json">
+  <script type="application/ld+json" is:inline>
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
