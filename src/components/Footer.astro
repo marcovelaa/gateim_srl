@@ -1,5 +1,7 @@
 ---
 import { Facebook, Linkedin, Instagram } from 'lucide-astro';
+import { Image } from 'astro:assets';
+
 const year = new Date().getFullYear();
 ---
 
@@ -77,9 +79,9 @@ const year = new Date().getFullYear();
       <div class="md:col-span-2">
         <h3 class="text-xs font-heading font-bold mb-3 text-white uppercase tracking-wider">CERTIFICACIONES</h3>
         <div class="flex items-center gap-3">
-          <img src="/images/certificaciones/iso-9001.svg" alt="Certificación ISO 9001" class="w-14 h-14 transition-transform hover:scale-105" />
-          <img src="/images/certificaciones/iso-14001.svg" alt="Certificación ISO 14001" class="w-14 h-14 transition-transform hover:scale-105" />
-          <img src="/images/certificaciones/iso-45001.svg" alt="Certificación ISO 45001" class="w-14 h-14 transition-transform hover:scale-105" />
+          <Image src="/images/certificaciones/iso-9001.svg" alt="Certificación ISO 9001" width={56} height={56} class="w-14 h-14 transition-transform hover:scale-105" />
+          <Image src="/images/certificaciones/iso-14001.svg" alt="Certificación ISO 14001" width={56} height={56} class="w-14 h-14 transition-transform hover:scale-105" />
+          <Image src="/images/certificaciones/iso-45001.svg" alt="Certificación ISO 45001" width={56} height={56} class="w-14 h-14 transition-transform hover:scale-105" />
         </div>
       </div>
 

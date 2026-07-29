@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
+import { Image } from 'astro:assets';
 
 import clientesData from '../data/clientes.json';
 
@@ -54,9 +55,11 @@ const description = "Empresas líderes en Bolivia confían en GATEIM SRL para su
 
             <!-- Logo Image -->
             <div class="relative z-10 w-full h-full flex items-center justify-center">
-              <img 
+              <Image 
                 src={cliente.logo} 
                 alt={cliente.name} 
+                width={220} 
+                height={96} 
                 class="max-h-24 w-auto max-w-[220px] object-contain transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-md" 
                 loading="lazy" 
               />
@@ -91,7 +94,7 @@ const description = "Empresas líderes en Bolivia confían en GATEIM SRL para su
 
         <div class="lg:col-span-5">
           <div class="overflow-hidden shadow-xl border border-gray-100">
-            <img src="/images/proyectos/default.png" alt="Reunión Técnica GATEIM SRL" class="w-full h-auto object-cover" loading="lazy" />
+            <Image src="/images/proyectos/default.png" alt="Reunión Técnica GATEIM SRL" width={600} height={400} class="w-full h-auto object-cover" loading="lazy" />
           </div>
         </div>
       </div>

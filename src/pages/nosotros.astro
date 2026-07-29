@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ValueCard from '../components/ValueCard.astro';
+import { Image } from 'astro:assets';
 import valoresData from '../data/valores.json';
 
 const title = "Nosotros | GATEIM SRL";
@@ -59,7 +60,7 @@ const description = "Conozca más sobre GATEIM SRL, nuestra trayectoria, valores
         <!-- Right Image Column (5 cols) -->
         <div class="lg:col-span-5 relative flex">
           <div class="w-full h-full min-h-[380px] overflow-hidden shadow-lg border border-gray-100 relative">
-            <img src="/images/proyectos/default.png" alt="GATEIM SRL" class="w-full h-full object-cover" loading="lazy" />
+            <Image src="/images/proyectos/default.png" alt="GATEIM SRL" width={600} height={600} class="w-full h-full object-cover" loading="lazy" />
             <div class="absolute inset-0 bg-navy/10 pointer-events-none"></div>
           </div>
           <div class="absolute -bottom-5 -left-5 bg-gold text-navy p-5 shadow-xl hidden md:block">

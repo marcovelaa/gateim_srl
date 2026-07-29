@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
 import proyectosData from '../data/proyectos.json';
 
 const title = "Proyectos Realizados | GATEIM SRL";
@@ -45,7 +46,7 @@ const description = "Galería de proyectos ejecutados por GATEIM SRL en mantenim
         {proyectosData.map(proyecto => (
           <div class="bg-white overflow-hidden shadow-md group border border-gray-100 flex flex-col">
             <div class="relative h-48 overflow-hidden">
-              <img src={proyecto.image} alt={proyecto.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              <Image src={proyecto.image} alt={proyecto.title} width={400} height={250} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
             </div>
             <div class="p-5 flex-grow flex flex-col justify-between">
               <div>
