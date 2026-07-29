@@ -53,7 +53,7 @@ const navItems = [
             return (
               <a 
                 href={item.href} 
-                class={`transition-colors uppercase tracking-widest pb-1 ${
+                class={`transition-colors uppercase tracking-widest pb-1 focus-visible:ring-2 focus-visible:ring-gold outline-none rounded-sm ${
                   isActive 
                     ? 'text-white font-bold border-b-2 border-gold' 
                     : 'text-gray-300 hover:text-white font-medium'
@@ -66,14 +66,14 @@ const navItems = [
         </nav>
 
         <!-- Desktop CTA -->
-        <a href="/contacto" class="bg-gold hover:bg-gold-light text-black font-bold text-xs py-3 px-8 transition-colors rounded-none tracking-widest uppercase">
+        <a href="/contacto" class="bg-gold hover:bg-gold-light text-black font-bold text-xs py-3 px-8 transition-colors rounded-none tracking-widest uppercase focus-visible:ring-2 focus-visible:ring-gold outline-none">
           COTIZAR
         </a>
       </div>
 
       <!-- Mobile menu button -->
       <div class="flex items-center lg:hidden">
-        <button id="mobile-menu-btn" type="button" class="text-white hover:text-gold p-2" aria-controls="mobile-menu" aria-expanded="false">
+        <button id="mobile-menu-btn" type="button" class="text-white hover:text-gold p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-md" aria-controls="mobile-menu" aria-expanded="false">
           <span class="sr-only">Abrir menú principal</span>
           <Menu id="icon-menu" class="h-8 w-8 block" />
           <X id="icon-close" class="h-8 w-8 hidden" />
@@ -90,7 +90,7 @@ const navItems = [
         return (
           <a 
             href={item.href} 
-            class={`block px-3 py-2 text-base uppercase tracking-wider ${
+            class={`block px-3 py-2 text-base uppercase tracking-wider focus-visible:ring-2 focus-visible:ring-gold outline-none ${
               isActive 
                 ? 'text-gold font-bold bg-navy-light' 
                 : 'text-gray-300 hover:text-white font-medium'
@@ -100,7 +100,7 @@ const navItems = [
           </a>
         );
       })}
-      <a href="/contacto" class="block px-3 py-2 mt-4 text-center text-base font-bold bg-gold text-black rounded-none">COTIZAR</a>
+      <a href="/contacto" class="block px-3 py-2 mt-4 text-center text-base font-bold bg-gold text-black rounded-none focus-visible:ring-2 focus-visible:ring-gold outline-none">COTIZAR</a>
     </div>
   </div>
 </header>
