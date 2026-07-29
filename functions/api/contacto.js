@@ -1,3 +1,14 @@
+function sanitize(str, maxLength = 2000) {
+  if (typeof str !== 'string') return '';
+  const trimmed = str.trim().slice(0, maxLength);
+  return trimmed
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 export async function onRequestPost(context) {
   try {
     const data = await context.request.json();
@@ -17,37 +28,50 @@ export async function onRequestPost(context) {
         headers: { 'Content-Type': 'application/json' }
       });
     }
+
+    // Sanitize and bound input lengths
+    const nombre = sanitize(data.nombre, 100);
+    const empresa = sanitize(data.empresa, 100);
+    const telefono = sanitize(data.telefono, 50);
+    const correo = sanitize(data.correo, 100);
+    const mensaje = sanitize(data.mensaje, 2000);
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(correo)) {
+      return new Response(JSON.stringify({ error: 'Correo electrónico inválido' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
     
     // Prepare email data for Resend API
     const emailData = {
-      from: 'Web GATEIM <no-reply@gateim.com.bo>', // Needs verified domain in Resend
-      to: ['ventas@gateim.com.bo'], // [PENDIENTE: confirmar correo real]
-      subject: `Nueva consulta de ${data.nombre} - Sitio Web`,
+      from: 'Web GATEIM <no-reply@gateim.com.bo>',
+      to: ['ventas@gateim.com.bo'],
+      subject: `Nueva consulta de ${nombre} - Sitio Web`,
       html: `
         <h2>Nueva consulta desde el sitio web</h2>
-        <p><strong>Nombre:</strong> ${data.nombre}</p>
-        <p><strong>Empresa:</strong> ${data.empresa || 'No especificada'}</p>
-        <p><strong>Teléfono:</strong> ${data.telefono || 'No especificado'}</p>
-        <p><strong>Correo Electrónico:</strong> ${data.correo}</p>
+        <p><strong>Nombre:</strong> ${nombre}</p>
+        <p><strong>Empresa:</strong> ${empresa || 'No especificada'}</p>
+        <p><strong>Teléfono:</strong> ${telefono || 'No especificado'}</p>
+        <p><strong>Correo Electrónico:</strong> ${correo}</p>
         <br/>
         <h3>Mensaje:</h3>
-        <p>${data.mensaje.replace(/\n/g, '<br/>')}</p>
+        <p>${mensaje.replace(/\n/g, '<br/>')}</p>
       `
     };
 
-    // Note: The RESEND_API_KEY must be configured in Cloudflare Pages dashboard
     const RESEND_API_KEY = context.env.RESEND_API_KEY;
 
     if (!RESEND_API_KEY) {
-      // For local development or if key is missing, just log and return success
       console.log('Email would be sent:', emailData);
-      return new Response(JSON.stringify({ success: true, warning: 'RESEND_API_KEY not configured' }), {
+      return new Response(JSON.stringify({ success: true, warning: 'RESEND_API_KEY no configurada' }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' }
       });
     }
 
-    // Call Resend API
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
