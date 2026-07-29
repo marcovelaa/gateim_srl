@@ -2,25 +2,25 @@
   {
     "title": "Mantenimiento Preventivo YPFB",
     "description": "[PENDIENTE: confirmar] Mantenimiento preventivo de bombas y compresores.",
-    "image": "/images/proyectos/default.png",
+    "image": "/gateim_srl/images/proyectos/default.png",
     "category": "Mantenimiento Mecánico"
   },
   {
     "title": "Montaje Línea de Envasado",
     "description": "[PENDIENTE: confirmar] Instalación y puesta en marcha de línea de producción.",
-    "image": "/images/proyectos/default.png",
+    "image": "/gateim_srl/images/proyectos/default.png",
     "category": "Montaje Industrial"
   },
   {
     "title": "Automatización Planta de Silos",
     "description": "[PENDIENTE: confirmar] Actualización de tableros de control PLC y SCADA.",
-    "image": "/images/proyectos/default.png",
+    "image": "/gateim_srl/images/proyectos/default.png",
     "category": "Instrumentación y Control"
   },
   {
     "title": "Parada de Planta Anual",
     "description": "[PENDIENTE: confirmar] Gestión integral de mantenimiento durante parada de planta programada.",
-    "image": "/images/proyectos/default.png",
+    "image": "/gateim_srl/images/proyectos/default.png",
     "category": "Paradas de Planta"
   }
 ]
