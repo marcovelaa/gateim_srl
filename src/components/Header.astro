@@ -2,17 +2,19 @@
 import { Menu, X } from 'lucide-astro';
 import { Image } from 'astro:assets';
 
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 const pathname = Astro.url.pathname;
-const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
+const normalizedPath = pathname.startsWith(base) ? pathname.slice(base.length) : pathname;
+const currentPath = (normalizedPath.endsWith('/') && normalizedPath.length > 1) ? normalizedPath.slice(0, -1) : (normalizedPath || '/');
 const isHome = currentPath === '/';
 
 const navItems = [
-  { name: 'INICIO', href: '/' },
-  { name: 'NOSOTROS', href: '/nosotros' },
-  { name: 'SERVICIOS', href: '/servicios' },
-  { name: 'PROYECTOS', href: '/proyectos' },
-  { name: 'CLIENTES', href: '/clientes' },
-  { name: 'CONTACTO', href: '/contacto' },
+  { name: 'INICIO', href: `${base}/` },
+  { name: 'NOSOTROS', href: `${base}/nosotros` },
+  { name: 'SERVICIOS', href: `${base}/servicios` },
+  { name: 'PROYECTOS', href: `${base}/proyectos` },
+  { name: 'CLIENTES', href: `${base}/clientes` },
+  { name: 'CONTACTO', href: `${base}/contacto` },
 ];
 ---
 
@@ -21,7 +23,7 @@ const navItems = [
     <div class="flex justify-between items-center py-3">
       <!-- Logo -->
       <div class="flex-shrink-0 flex items-center">
-        <a href="/" class="flex items-center gap-3 group focus:outline-none">
+        <a href={`${base}/`} class="flex items-center gap-3 group focus:outline-none">
           <Image 
             src="/gateim_srl/images/logo-gateim3.png" 
             alt="GATEIM SRL Emblem" 
@@ -66,7 +68,7 @@ const navItems = [
         </nav>
 
         <!-- Desktop CTA -->
-        <a href="/contacto" class="bg-gold hover:bg-gold-light text-black font-bold text-xs py-3 px-8 transition-colors rounded-none tracking-widest uppercase focus-visible:ring-2 focus-visible:ring-gold outline-none">
+        <a href={`${base}/contacto`} class="bg-gold hover:bg-gold-light text-black font-bold text-xs py-3 px-8 transition-colors rounded-none tracking-widest uppercase focus-visible:ring-2 focus-visible:ring-gold outline-none">
           COTIZAR
         </a>
       </div>
@@ -100,7 +102,7 @@ const navItems = [
           </a>
         );
       })}
-      <a href="/contacto" class="block px-3 py-2 mt-4 text-center text-base font-bold bg-gold text-black rounded-none focus-visible:ring-2 focus-visible:ring-gold outline-none">COTIZAR</a>
+      <a href={`${base}/contacto`} class="block px-3 py-2 mt-4 text-center text-base font-bold bg-gold text-black rounded-none focus-visible:ring-2 focus-visible:ring-gold outline-none">COTIZAR</a>
     </div>
   </div>
 </header>
