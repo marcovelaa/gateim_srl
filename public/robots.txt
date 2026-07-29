@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gateim.com.bo/sitemap-index.xml

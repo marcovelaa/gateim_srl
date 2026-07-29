@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="none"/>
+  <circle cx="35" cy="40" r="18" fill="#0B1D3A"/>
+  <path d="M27 45 L35 28 L43 45 Z" fill="#D4A528"/>
+  <text x="62" y="38" font-family="'Montserrat', Arial, sans-serif" font-size="15" font-weight="900" fill="#0B1D3A">CEMENTO</text>
+  <text x="62" y="55" font-family="'Montserrat', Arial, sans-serif" font-size="17" font-weight="900" fill="#D4A528">CAMBA</text>
+</svg>

@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+import serviciosData from '../data/servicios.json';
+
+const title = "Servicios Industriales | GATEIM SRL";
+const description = "Ofrecemos mantenimiento, montaje, fabricación, soldadura y automatización para plantas industriales. Revise nuestro catálogo de servicios técnicos.";
+
+const faqs = [
+  {
+    question: "¿Atienden emergencias fuera de horario de oficina?",
+    answer: "Sí, contamos con soporte técnico 24/7 para nuestros clientes con contrato de mantenimiento activo, asegurando la menor cantidad de tiempo inactivo posible ante fallas críticas."
+  },
+  {
+    question: "¿Tienen certificaciones para trabajos de soldadura?",
+    answer: "Absolutamente. Todos nuestros soldadores cuentan con certificaciones vigentes (ASME IX, API 1104) para realizar trabajos de soldadura estructural y tuberías de alta presión."
+  },
+  {
+    question: "¿Ofrecen garantías por los trabajos de mantenimiento?",
+    answer: "Todos nuestros servicios incluyen una garantía técnica documentada. Los plazos de cobertura varían según el tipo de intervención y los repuestos utilizados."
+  },
+  {
+    question: "¿Pueden realizar trabajos en paradas de planta programadas?",
+    answer: "Sí, somos especialistas en planificación y ejecución de mantenimiento durante paradas de planta, aportando cuadrillas completas trabajando en múltiples turnos para cumplir los plazos."
+  }
+];
+
+const serviceSchemas = serviciosData.map(service => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.title,
+  "description": service.description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "GATEIM SRL"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Bolivia"
+  }
+}));
+---
+
+<BaseLayout title={title} description={description}>
+  {serviceSchemas.map(schema => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
+
+  <!-- Breadcrumb JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://gateim.com.bo/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Servicios"
+        }
+      ]
+    }
+  </script>
+
+  <!-- All Services Grid Section -->
+  <section class="pt-16 pb-20 bg-white">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16 mb-12">
+      <p class="text-navy font-bold text-xs tracking-widest uppercase mb-2">NUESTROS SERVICIOS</p>
+      <h1 class="text-3xl md:text-4xl font-extrabold font-heading text-navy uppercase leading-tight mb-4">
+        CATÁLOGO INTEGRAL DE SOLUCIONES TÉCNICAS PARA LA INDUSTRIA
+      </h1>
+      <p class="text-gray-text text-sm max-w-2xl">
+        Ofrecemos un portafolio completo de mantenimiento, montaje, mecanizado y automatización industrial adaptado a sus necesidades operativas.
+      </p>
+    </div>
+
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {serviciosData.map(servicio => (
+          <div id={servicio.id} class="scroll-mt-24">
+            <ServiceCard 
+              title={servicio.title}
+              description={servicio.details}
+              icon={servicio.icon}
+              image={servicio.image}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-gray-light border-t border-gray-200/60">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16">
+      <FaqSection 
+        title="Preguntas Frecuentes"
+        items={faqs}
+        addSchema={true}
+      />
+    </div>
+  </section>
+</BaseLayout>

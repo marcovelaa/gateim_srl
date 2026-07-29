@@ -1,0 +1,27 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  centered?: boolean;
+  light?: boolean;
+}
+
+const { eyebrow, title, description, centered = false, light = false } = Astro.props;
+---
+
+<div class={`mb-12 ${centered ? 'text-center' : ''}`}>
+  {eyebrow && (
+    <span class="text-gold font-bold uppercase tracking-wider text-sm block mb-2">
+      {eyebrow}
+    </span>
+  )}
+  <h2 class={`text-3xl md:text-4xl font-extrabold font-heading mb-4 ${light ? 'text-white' : 'text-navy'}`}>
+    {title}
+  </h2>
+  {description && (
+    <p class={`text-lg max-w-3xl ${centered ? 'mx-auto' : ''} ${light ? 'text-gray-300' : 'text-gray-text'}`}>
+      {description}
+    </p>
+  )}
+</div>

@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ValueCard from '../components/ValueCard.astro';
+import valoresData from '../data/valores.json';
+
+const title = "Nosotros | GATEIM SRL";
+const description = "Conozca más sobre GATEIM SRL, nuestra trayectoria, valores y el equipo de profesionales detrás de nuestros servicios industriales.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- About Content -->
+  <section class="py-16 bg-white">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16">
+      <div class="mb-10">
+        <p class="text-navy font-bold text-xs tracking-widest uppercase mb-1">SOBRE NOSOTROS</p>
+        <h1 class="text-3xl md:text-4xl font-extrabold font-heading text-navy uppercase leading-tight">
+          COMPROMETIDOS CON LA EXCELENCIA<br />
+          INDUSTRIAL EN BOLIVIA
+        </h1>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+        <!-- Left Text Column (7 cols) -->
+        <div class="lg:col-span-7 flex flex-col justify-between">
+          <div>
+            <h2 class="text-2xl font-bold font-heading text-navy mb-4">Asistencia Técnica Industrial de Primer Nivel</h2>
+            <div class="text-gray-text leading-relaxed space-y-4 text-justify text-sm md:text-base">
+              <p>
+                En GATEIM SRL, nos especializamos en brindar soluciones integrales para el sector industrial. 
+                Con sede en Santa Cruz de la Sierra, nuestro equipo de ingenieros y técnicos altamente 
+                capacitados trabaja día a día para garantizar la continuidad y eficiencia operativa de su empresa.
+              </p>
+              <p>
+                Nos enfocamos en entender las necesidades específicas de cada cliente, ofreciendo un servicio 
+                personalizado que va desde el mantenimiento preventivo hasta el montaje de líneas de producción complejas.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-6 border-t border-gray-100">
+              <h3 class="text-sm font-bold text-navy uppercase tracking-wider mb-3">NUESTROS COMPROMISOS:</h3>
+              <ul class="space-y-2.5">
+                <li class="flex items-center text-xs md:text-sm text-gray-700">
+                  <span class="w-2 h-2 bg-gold rounded-full mr-3 flex-shrink-0"></span>
+                  <span>Personal técnico certificado y en constante capacitación.</span>
+                </li>
+                <li class="flex items-center text-xs md:text-sm text-gray-700">
+                  <span class="w-2 h-2 bg-gold rounded-full mr-3 flex-shrink-0"></span>
+                  <span>Cumplimiento estricto de normativas de seguridad industrial (ISO 45001).</span>
+                </li>
+                <li class="flex items-center text-xs md:text-sm text-gray-700">
+                  <span class="w-2 h-2 bg-gold rounded-full mr-3 flex-shrink-0"></span>
+                  <span>Disponibilidad y respuesta rápida ante emergencias las 24 horas.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Image Column (5 cols) -->
+        <div class="lg:col-span-5 relative flex">
+          <div class="w-full h-full min-h-[380px] overflow-hidden shadow-lg border border-gray-100 relative">
+            <img src="/images/proyectos/default.png" alt="GATEIM SRL" class="w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-navy/10 pointer-events-none"></div>
+          </div>
+          <div class="absolute -bottom-5 -left-5 bg-gold text-navy p-5 shadow-xl hidden md:block">
+            <div class="text-3xl font-extrabold font-heading leading-none mb-1">10+</div>
+            <div class="text-[0.65rem] font-bold uppercase tracking-wider leading-tight">Años de Experiencia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-16 bg-gray-light border-t border-gray-200/60">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16">
+      <div class="text-center mb-10">
+        <p class="text-navy font-bold text-xs tracking-widest uppercase mb-2">NUESTROS PILARES</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold font-heading text-navy uppercase">VALORES CORPORATIVOS</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {valoresData.map(valor => (
+          <ValueCard 
+            title={valor.title}
+            description={valor.description}
+            icon={valor.icon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+
+import clientesData from '../data/clientes.json';
+
+const title = "Nuestros Clientes | GATEIM SRL";
+const description = "Empresas líderes en Bolivia confían en GATEIM SRL para sus requerimientos de mantenimiento y montaje industrial.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Breadcrumb JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://gateim.com.bo/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Clientes"
+        }
+      ]
+    }
+  </script>
+
+  <!-- Premium Clients Section -->
+  <section class="pt-16 pb-24 bg-white">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16 mb-16">
+      <p class="text-navy font-bold text-xs tracking-widest uppercase mb-2">NUESTROS CLIENTES</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold font-heading text-navy uppercase leading-tight mb-4">
+        RELACIONES A LARGO PLAZO BASADAS EN LA CONFIANZA Y RESULTADOS
+      </h1>
+      <p class="text-gray-text text-base max-w-2xl leading-relaxed">
+        Trabajamos junto a las empresas industriales e institucionales más destacadas del país, garantizando excelencia operativa, seguridad y precisión técnica.
+      </p>
+    </div>
+
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-6xl mx-auto">
+        {clientesData.map(cliente => (
+          <div class="relative bg-white border border-gray-100 shadow-sm hover:shadow-2xl hover:border-gold/40 transition-all duration-500 rounded-none group overflow-hidden p-8 md:p-10 flex flex-col items-center justify-center h-48 md:h-52">
+            <!-- Top Gold Accent Line on Hover -->
+            <div class="absolute top-0 left-0 w-full h-1 bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            
+            <!-- Subtle Radial Soft Background Glow on Hover -->
+            <div class="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+            <!-- Logo Image -->
+            <div class="relative z-10 w-full h-full flex items-center justify-center">
+              <img 
+                src={cliente.logo} 
+                alt={cliente.name} 
+                class="max-h-24 w-auto max-w-[220px] object-contain transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-md" 
+                loading="lazy" 
+              />
+            </div>
+
+            <!-- Soft Micro Tag -->
+            <span class="relative z-10 mt-3 text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest group-hover:text-gold transition-colors duration-300">
+              CLIENTE INSTITUCIONAL
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Redesigned CTA Section -->
+  <section class="py-20 bg-gray-light border-t border-gray-200/60">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7">
+          <p class="text-navy font-bold text-xs tracking-widest uppercase mb-3">ALIANZA ESTRATÉGICA</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold font-heading text-navy uppercase leading-tight mb-4">
+            SÚMESE A NUESTRA CARTERA DE CLIENTES SATISFECHOS
+          </h2>
+          <p class="text-gray-text text-base leading-relaxed mb-8 max-w-xl">
+            Descubra por qué las principales industrias nos eligen como su proveedor de servicios técnicos y mantenimiento.
+          </p>
+          <Button variant="secondary" href="/contacto">
+            SOLICITAR REUNIÓN
+          </Button>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="overflow-hidden shadow-xl border border-gray-100">
+            <img src="/images/proyectos/default.png" alt="Reunión Técnica GATEIM SRL" class="w-full h-auto object-cover" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

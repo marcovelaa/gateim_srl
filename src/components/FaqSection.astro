@@ -1,0 +1,60 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  items: FaqItem[];
+  addSchema?: boolean;
+}
+
+const { title, items, addSchema = false } = Astro.props;
+
+// Generate FAQPage schema
+const schema = addSchema ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": items.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+} : null;
+---
+
+<div class="w-full max-w-4xl mx-auto">
+  <h2 class="text-3xl font-extrabold font-heading text-navy mb-8 text-center">{title}</h2>
+  
+  <div class="space-y-4" itemscope itemtype={addSchema ? "https://schema.org/FAQPage" : undefined}>
+    {items.map((item, index) => (
+      <details class="group border border-gray-200 rounded-lg bg-white" itemscope itemprop="mainEntity" itemtype={addSchema ? "https://schema.org/Question" : undefined}>
+        <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-lg text-navy hover:text-gold transition-colors">
+          <span itemprop="name">{item.question}</span>
+          <span class="transition group-open:rotate-180">
+            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+          </span>
+        </summary>
+        <div class="text-gray-text px-6 pb-6" itemscope itemprop="acceptedAnswer" itemtype={addSchema ? "https://schema.org/Answer" : undefined}>
+          <div itemprop="text">
+            {item.answer}
+          </div>
+        </div>
+      </details>
+    ))}
+  </div>
+
+  {addSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  )}
+</div>
+
+<style>
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+interface Props {
+  variant: 'primary' | 'secondary' | 'outline';
+  href?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+  showArrow?: boolean;
+}
+
+const { variant, href, type = 'button', class: className = '', showArrow = false } = Astro.props;
+
+const baseStyles = "inline-flex justify-center items-center px-6 py-3 text-sm font-bold uppercase tracking-wider transition-colors focus:outline-none rounded-none";
+const variantStyles = {
+  primary: "text-navy bg-gold hover:bg-gold-light",
+  secondary: "text-white bg-navy border border-gray-700 hover:bg-navy-light",
+  outline: "text-white bg-transparent border border-white hover:bg-white/10"
+};
+
+const Element = href ? 'a' : 'button';
+---
+
+<Element 
+  href={href} 
+  type={href ? undefined : type} 
+  class={`${baseStyles} ${variantStyles[variant]} ${className}`}
+>
+  <slot />
+  {showArrow && (
+    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+  )}
+</Element>

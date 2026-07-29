@@ -1,0 +1,66 @@
+[
+  {
+    "id": "mantenimiento-industrial",
+    "title": "Mantenimiento Industrial",
+    "description": "Soluciones preventivas y correctivas para optimizar la vida útil de sus equipos.",
+    "icon": "settings",
+    "image": "/images/servicios/mantenimiento-industrial.jpg",
+    "details": "Brindamos servicios especializados de mantenimiento industrial preventivo, predictivo y correctivo. Nuestro equipo evalúa el estado de sus activos, implementa planes de lubricación, alineación láser y análisis vibracional para maximizar la disponibilidad y evitar paradas no programadas."
+  },
+  {
+    "id": "montaje-industrial",
+    "title": "Montaje Industrial",
+    "description": "Instalación y puesta en marcha de maquinaria y líneas de producción completas.",
+    "icon": "factory",
+    "image": "/images/servicios/montaje-industrial.jpg",
+    "details": "Ejecutamos proyectos de montaje industrial con máxima precisión. Realizamos posicionamiento de equipos pesados, alineación de estructuras, conexión de sistemas neumático e hidráulico, y pruebas de funcionamiento bajo rigurosos protocolos de seguridad."
+  },
+  {
+    "id": "fabricacion-mecanizado",
+    "title": "Fabricación y Mecanizado",
+    "description": "Diseño y fabricación de piezas a medida con altos estándares de precisión.",
+    "icon": "wrench",
+    "image": "/images/servicios/fabricacion-mecanizado.jpg",
+    "details": "Contamos con capacidad de mecanizado en torno, fresadora y centros de mecanizado CNC para la fabricación y reconstrucción de ejes, engranajes, bujes y componentes de alta resistencia para maquinaria pesada."
+  },
+  {
+    "id": "soldadura-industrial",
+    "title": "Soldadura Industrial",
+    "description": "Procesos de soldadura calificada y certificada para estructuras y tuberías.",
+    "icon": "flame",
+    "image": "/images/servicios/soldadura-industrial.jpg",
+    "details": "Servicios de soldadura certificada (SMAW, GTAW/TIG, GMAW/MIG) para tuberías de proceso, recipientes a presión y estructuras metálicas de gran envergadura cumpliendo especificaciones ASME y AWS."
+  },
+  {
+    "id": "mantenimiento-mecanico",
+    "title": "Mantenimiento Mecánico",
+    "description": "Revisión y reparación de sistemas mecánicos complejos.",
+    "icon": "cog",
+    "image": "/images/proyectos/default.png",
+    "details": "Atención especializada en reparación de reductores, reductores planetarios, bombas centrífugas, acoplamientos y sistemas de transmisión de potencia en plantas procesadoras."
+  },
+  {
+    "id": "mantenimiento-electrico",
+    "title": "Mantenimiento Eléctrico",
+    "description": "Diagnóstico y mantenimiento de instalaciones eléctricas industriales.",
+    "icon": "zap",
+    "image": "/images/proyectos/default.png",
+    "details": "Mantenimiento de motores eléctricos, tableros de distribución en baja y media tensión, sistemas de puesta a tierra y termografía preventiva para evitar fallas eléctricas."
+  },
+  {
+    "id": "instrumentacion-control",
+    "title": "Instrumentación y Control",
+    "description": "Calibración y automatización de procesos industriales.",
+    "icon": "activity",
+    "image": "/images/proyectos/default.png",
+    "details": "Calibración de transmisores de presión, temperatura y flujo, configuración de variadores de frecuencia y mantenimiento de válvulas de control en líneas automatizadas."
+  },
+  {
+    "id": "paradas-planta",
+    "title": "Paradas de Planta",
+    "description": "Planificación y ejecución integral de paradas programadas de mantenimiento.",
+    "icon": "clock",
+    "image": "/images/proyectos/default.png",
+    "details": "Gestión eficiente de recursos y personal capacitado durante paradas de planta programadas, asegurando el cumplimiento estricto de cronogramas para minimizar tiempos muertos."
+  }
+]

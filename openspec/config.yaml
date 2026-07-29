@@ -1,0 +1,67 @@
+schema: spec-driven
+
+context: |
+  Tech stack: Astro (static site generator) + Tailwind CSS
+  Architecture: Static multi-page site, component-based (Astro components)
+  Hosting: Cloudflare Pages with Pages Functions for contact form
+  Form backend: Cloudflare Pages Function + Resend API
+  Anti-spam: Honeypot + Cloudflare Turnstile
+  Style: Mobile-first, design-token-driven via tailwind.config.mjs
+  Content: JSON data files (src/data/*.json) for repeatable content
+  Language: Spanish (es) — all UI copy and content in Spanish
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+    - Reference guide-example/plan.md as the source of truth for project scope
+    - Reference guide-example/agents.md for coding standards
+    - Reference guide-example/seo.md for SEO requirements
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Include sequence diagrams for complex flows
+    - Document architecture decisions with rationale
+    - Reference guide-example/gateim.jpeg as visual source of truth
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+    - Follow the phased approach from plan.md (Fase 0-6)
+  apply:
+    guidelines:
+      - Follow existing code patterns from agents.md
+      - Mobile-first CSS (375px → md → lg breakpoints)
+      - Semantic HTML (header, nav, main, section, article, footer)
+      - Props tipadas con TypeScript (interface Props {})
+      - Content in src/data/*.json, not hardcoded in .astro files
+      - All images via Astro <Image /> component
+      - Self-hosted fonts (@font-face, not Google Fonts CDN)
+      - Zero client-side JS except mobile menu and form submission
+    tdd: false
+    test_command: ""
+  verify:
+    test_command: ""
+    build_command: "npm run build"
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
+
+testing:
+  strict_tdd: false
+  reason: "Greenfield project — no test runner configured yet. Astro static site with minimal JS; testing will be added post-setup."
+  detected: "2026-07-29"
+  test_runner:
+    command: ""
+    framework: "none"
+  layers:
+    unit: false
+    integration: false
+    e2e: false
+  coverage:
+    available: false
+    command: ""
+  quality:
+    linter: false
+    type_checker: true
+    type_checker_note: "Astro built-in TypeScript support"
+    formatter: false

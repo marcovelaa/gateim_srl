@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="none"/>
+  <path d="M25 40 L35 20 L45 40 L35 60 Z" fill="#007A33"/>
+  <circle cx="35" cy="40" r="6" fill="#CE1126"/>
+  <text x="60" y="50" font-family="'Montserrat', Arial, sans-serif" font-size="28" font-weight="900" fill="#007A33" letter-spacing="1">YPFB</text>
+</svg>

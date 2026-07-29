@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import proyectosData from '../data/proyectos.json';
+
+const title = "Proyectos Realizados | GATEIM SRL";
+const description = "Galería de proyectos ejecutados por GATEIM SRL en mantenimiento, montaje y automatización industrial para empresas líderes en Bolivia.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Breadcrumb JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://gateim.com.bo/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Proyectos"
+        }
+      ]
+    }
+  </script>
+
+  <!-- Projects Gallery Section -->
+  <section class="pt-16 pb-20 bg-white">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16 mb-12">
+      <p class="text-navy font-bold text-xs tracking-widest uppercase mb-2">PROYECTOS REALIZADOS</p>
+      <h1 class="text-3xl md:text-4xl font-extrabold font-heading text-navy uppercase leading-tight mb-4">
+        EXPERIENCIA COMPROBADA EN MÚLTIPLES SECTORES INDUSTRIALES
+      </h1>
+      <p class="text-gray-text text-sm max-w-2xl">
+        Conozca la calidad técnica y operativa de nuestros proyectos ejecutados en mantenimiento, montaje y automatización industrial.
+      </p>
+    </div>
+
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {proyectosData.map(proyecto => (
+          <div class="bg-white overflow-hidden shadow-md group border border-gray-100 flex flex-col">
+            <div class="relative h-48 overflow-hidden">
+              <img src={proyecto.image} alt={proyecto.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+            </div>
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-base text-navy mb-2 leading-snug">{proyecto.title}</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">{proyecto.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

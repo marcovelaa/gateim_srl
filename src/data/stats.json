@@ -1,0 +1,22 @@
+[
+  {
+    "number": "10+",
+    "label": "Años de Experiencia",
+    "icon": "award"
+  },
+  {
+    "number": "200+",
+    "label": "Proyectos Completados",
+    "icon": "briefcase"
+  },
+  {
+    "number": "150+",
+    "label": "Clientes Satisfechos",
+    "icon": "users"
+  },
+  {
+    "number": "24/7",
+    "label": "Soporte Técnico",
+    "icon": "phone-call"
+  }
+]

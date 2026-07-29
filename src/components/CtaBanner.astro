@@ -1,0 +1,33 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonLink: string;
+  eyebrow?: string;
+}
+
+const { title, description, buttonText, buttonLink, eyebrow } = Astro.props;
+---
+
+<section class="bg-navy relative overflow-hidden flex flex-col md:flex-row">
+  <div class="w-full md:w-5/12 min-h-[300px] relative bg-gray-900">
+    <!-- Placeholder for the worker looking away image -->
+    <img src="[PENDIENTE: cta-worker.jpg]" alt="Trabajador" class="absolute inset-0 w-full h-full object-cover grayscale opacity-60" loading="lazy" />
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent to-navy hidden md:block"></div>
+  </div>
+  <div class="w-full md:w-7/12 py-16 px-8 md:px-16 flex flex-col justify-center items-start">
+    {eyebrow && <p class="text-gold font-bold text-xs tracking-widest uppercase mb-3">{eyebrow}</p>}
+    <h2 class="text-3xl md:text-4xl font-extrabold font-heading text-white uppercase mb-4 max-w-xl leading-tight">
+      {title}
+    </h2>
+    <p class="text-gray-300 mb-8 max-w-lg leading-relaxed text-sm">
+      {description}
+    </p>
+    <Button variant="primary" href={buttonLink} showArrow={true}>
+      {buttonText}
+    </Button>
+  </div>
+</section>

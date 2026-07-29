@@ -1,0 +1,116 @@
+---
+import Button from './Button.astro';
+---
+
+<form id="contact-form" class="space-y-6 bg-white p-8 rounded-lg shadow-md border border-gray-100">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="nombre" class="block text-sm font-medium text-gray-text mb-1">Nombre Completo *</label>
+      <input type="text" id="nombre" name="nombre" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-navy focus:border-navy outline-none transition-colors" />
+    </div>
+    <div>
+      <label for="empresa" class="block text-sm font-medium text-gray-text mb-1">Empresa</label>
+      <input type="text" id="empresa" name="empresa" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-navy focus:border-navy outline-none transition-colors" />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="telefono" class="block text-sm font-medium text-gray-text mb-1">Teléfono</label>
+      <input type="tel" id="telefono" name="telefono" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-navy focus:border-navy outline-none transition-colors" />
+    </div>
+    <div>
+      <label for="correo" class="block text-sm font-medium text-gray-text mb-1">Correo Electrónico *</label>
+      <input type="email" id="correo" name="correo" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-navy focus:border-navy outline-none transition-colors" />
+    </div>
+  </div>
+
+  <div>
+    <label for="mensaje" class="block text-sm font-medium text-gray-text mb-1">Mensaje *</label>
+    <textarea id="mensaje" name="mensaje" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-navy focus:border-navy outline-none transition-colors resize-y"></textarea>
+  </div>
+
+  <!-- Honeypot field (hidden) -->
+  <div class="hidden" aria-hidden="true">
+    <label for="bot-field">Do not fill this out if you are human:</label>
+    <input type="text" id="bot-field" name="bot-field" tabindex="-1" />
+  </div>
+
+  <div id="form-status" class="hidden rounded-md p-4 mb-4"></div>
+
+  <div class="mt-8">
+    <Button variant="primary" type="submit" class="w-full justify-center" showArrow={false}>
+      ENVIAR MENSAJE
+    </Button>
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const statusDiv = document.getElementById('form-status');
+
+  if (form && statusDiv) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const botField = formData.get('bot-field');
+      
+      if (botField) {
+        // Honeypot caught something, fail silently
+        showStatus('Mensaje enviado exitosamente.', 'success');
+        form.reset();
+        return;
+      }
+      
+      const data = Object.fromEntries(formData.entries());
+      delete data['bot-field'];
+
+      // Simple client side validation
+      if (!data.nombre || !data.correo || !data.mensaje) {
+        showStatus('Por favor complete todos los campos obligatorios.', 'error');
+        return;
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const originalText = submitBtn.innerText;
+      submitBtn.innerText = 'Enviando...';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch('/api/contacto', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          showStatus('Su mensaje ha sido enviado exitosamente. Nos pondremos en contacto pronto.', 'success');
+          form.reset();
+        } else {
+          showStatus('Ocurrió un error al enviar el mensaje. Por favor intente nuevamente.', 'error');
+        }
+      } catch (error) {
+        showStatus('Error de conexión. Por favor revise su internet e intente nuevamente.', 'error');
+      } finally {
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  }
+
+  function showStatus(message: string, type: 'success' | 'error') {
+    if (!statusDiv) return;
+    
+    statusDiv.textContent = message;
+    statusDiv.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+    
+    if (type === 'success') {
+      statusDiv.classList.add('bg-green-100', 'text-green-800');
+    } else {
+      statusDiv.classList.add('bg-red-100', 'text-red-800');
+    }
+  }
+</script>

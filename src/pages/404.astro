@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+
+const title = "Página no encontrada | GATEIM SRL";
+const description = "Lo sentimos, la página que está buscando no existe.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-32 bg-gray-light flex-grow flex items-center justify-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-9xl font-extrabold font-heading text-navy mb-4 opacity-20">404</h1>
+      <h2 class="text-3xl md:text-4xl font-extrabold font-heading text-navy mb-6">Página no encontrada</h2>
+      <p class="text-xl text-gray-text mb-10">
+        Lo sentimos, no pudimos encontrar la página que estás buscando. Es posible que haya sido movida o eliminada.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <Button variant="primary" href="/">
+          Volver al Inicio
+        </Button>
+        <Button variant="secondary" href="/contacto">
+          Contactar Soporte
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

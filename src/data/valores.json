@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Integridad",
+    "description": "Actuamos con transparencia y honestidad en cada uno de nuestros proyectos y relaciones comerciales.",
+    "icon": "shield-check"
+  },
+  {
+    "title": "Responsabilidad",
+    "description": "Cumplimos nuestros compromisos en los plazos acordados, priorizando la seguridad y calidad.",
+    "icon": "clipboard-check"
+  },
+  {
+    "title": "Innovación",
+    "description": "Buscamos constantemente la mejora continua y aplicamos las mejores tecnologías disponibles.",
+    "icon": "lightbulb"
+  },
+  {
+    "title": "Trabajo en Equipo",
+    "description": "Fomentamos la colaboración y el respeto mutuo para alcanzar objetivos comunes con excelencia.",
+    "icon": "users"
+  }
+]

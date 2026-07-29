@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import StatItem from '../components/StatItem.astro';
+
+import serviciosData from '../data/servicios.json';
+import statsData from '../data/stats.json';
+import proyectosData from '../data/proyectos.json';
+
+const title = "GATEIM SRL - Asistencia Técnica Industrial y Mecánica";
+const description = "Soluciones industriales de mantenimiento, reparación y montaje industrial con altos estándares de calidad, seguridad y eficiencia en Santa Cruz, Bolivia.";
+
+const servicios = serviciosData.slice(0, 4);
+---
+
+<BaseLayout title={title} description={description}>
+
+  <!-- 1. Hero Section -->
+  <section class="relative bg-navy overflow-hidden min-h-screen flex flex-col justify-center">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img src="/images/background-gateim.png" class="w-full h-full object-cover object-[75%_top]" alt="Trabajador Industrial GATEIM" />
+    </div>
+    
+    <div class="relative w-full max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16 pt-32 pb-20 flex-grow flex items-center">
+      <div class="max-w-3xl">
+        <p class="text-gold font-bold text-xs tracking-[0.25em] uppercase mb-5">ASISTENCIA TÉCNICA INDUSTRIAL Y MECÁNICA</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold font-heading text-white leading-tight mb-8 tracking-tight">
+          <span class="block">SOLUCIONES INDUSTRIALES</span>
+          <span class="block">QUE MUEVEN <span class="text-gold">TU PRODUCCIÓN</span></span>
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl text-gray-200 font-normal leading-relaxed max-w-2xl mb-12">
+          Brindamos servicios de mantenimiento, reparación y montaje con altos estándares de calidad, seguridad y eficiencia para la industria.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-5 pt-2">
+          <Button variant="primary" href="/servicios" class="!px-8 !py-4 text-sm font-bold">
+            NUESTROS SERVICIOS
+          </Button>
+          <Button variant="outline" href="/contacto" showArrow={true} class="!px-8 !py-4 text-sm font-bold">
+            COTIZAR AHORA
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Nuestros Servicios -->
+  <section class="py-20 bg-white">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16 text-center mb-16">
+      <p class="text-navy font-bold text-xs tracking-widest uppercase mb-3">NUESTROS SERVICIOS</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold font-heading text-navy uppercase mb-4">SOLUCIONES INTEGRALES PARA LA INDUSTRIA</h2>
+      <p class="text-gray-text text-sm max-w-2xl mx-auto">
+        Ofrecemos un portafolio completo de servicios industriales y mecánicos adaptados a las necesidades de cada cliente.
+      </p>
+    </div>
+
+    <!-- Cards de Servicios -->
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16 mb-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {servicios.map(service => (
+          <ServiceCard
+            title={service.title}
+            description={service.description}
+            icon={service.icon}
+            image={service.image}
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- Integración de Métricas en Servicios -->
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16">
+      <div class="bg-navy p-8 md:p-10 shadow-xl border-t-4 border-gold">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-gray-800/80">
+          {statsData.map(stat => (
+            <StatItem
+              number={stat.number}
+              label={stat.label}
+              icon={stat.icon}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Proyectos Realizados -->
+  <section class="py-20 bg-gray-light">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16 text-center mb-12">
+      <p class="text-navy font-bold text-xs tracking-widest uppercase mb-3">PROYECTOS REALIZADOS</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold font-heading text-navy uppercase">CONOCE ALGUNOS DE NUESTROS TRABAJOS</h2>
+    </div>
+
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {proyectosData.slice(0, 4).map(proyecto => (
+          <div class="bg-white overflow-hidden shadow-md group border border-gray-100 flex flex-col">
+            <div class="relative h-48 overflow-hidden">
+              <img src={proyecto.image} alt={proyecto.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+            </div>
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-base text-navy mb-2 leading-snug">{proyecto.title}</h3>
+                <p class="text-xs text-gray-600 line-clamp-2">{proyecto.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center">
+        <Button variant="secondary" href="/proyectos">
+          VER TODOS LOS PROYECTOS
+        </Button>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

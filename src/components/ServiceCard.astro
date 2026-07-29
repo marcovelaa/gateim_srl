@@ -1,0 +1,44 @@
+---
+import { Settings, Factory, Wrench, Flame, Cog, Zap, Activity, Clock } from 'lucide-astro';
+
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  image: string;
+  link?: string;
+}
+
+const { title, description, icon, image, link } = Astro.props;
+
+const IconComponent = {
+  'settings': Settings,
+  'factory': Factory,
+  'wrench': Wrench,
+  'flame': Flame,
+  'cog': Cog,
+  'zap': Zap,
+  'activity': Activity,
+  'clock': Clock,
+}[icon.toLowerCase()] || Settings;
+---
+
+<div class="bg-white shadow-lg flex flex-col h-full group border border-gray-100">
+  <div class="relative h-48">
+    <img src={image} alt={title} class="w-full h-full object-cover" loading="lazy" />
+    <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition-colors"></div>
+    <div class="absolute -bottom-8 left-6 w-16 h-16 bg-navy rounded-full flex items-center justify-center border-4 border-white shadow-sm">
+      <IconComponent class="h-6 w-6 text-gold" />
+    </div>
+  </div>
+  <div class="pt-12 px-6 pb-6 flex-grow flex flex-col">
+    <h3 class="text-lg font-bold font-heading text-navy mb-3 uppercase leading-tight">{title}</h3>
+    <p class={`text-sm text-gray-text leading-relaxed ${link ? 'mb-6 flex-grow' : 'mb-2'}`}>{description}</p>
+    {link && (
+      <a href={link} class="text-navy hover:text-gold font-bold text-xs inline-flex items-center transition-colors uppercase tracking-wider mt-auto pt-4">
+        VER MÁS
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </a>
+    )}
+  </div>
+</div>

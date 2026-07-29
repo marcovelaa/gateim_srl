@@ -1,0 +1,120 @@
+---
+import { Menu, X } from 'lucide-astro';
+
+const pathname = Astro.url.pathname;
+const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
+const isHome = currentPath === '/';
+
+const navItems = [
+  { name: 'INICIO', href: '/' },
+  { name: 'NOSOTROS', href: '/nosotros' },
+  { name: 'SERVICIOS', href: '/servicios' },
+  { name: 'PROYECTOS', href: '/proyectos' },
+  { name: 'CLIENTES', href: '/clientes' },
+  { name: 'CONTACTO', href: '/contacto' },
+];
+---
+
+<header class={`${isHome ? 'absolute w-full top-0 left-0 bg-transparent' : 'sticky top-0 left-0 bg-navy border-b border-gray-800/80 shadow-md'} z-50`}>
+  <div class="max-w-[1600px] mx-auto px-4 lg:px-12 2xl:px-16">
+    <div class="flex justify-between items-center py-3">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="/" class="flex items-center gap-3 group focus:outline-none">
+          <img 
+            src="/images/logo-gateim3.png" 
+            alt="Isotipo GATEIM SRL" 
+            class="h-14 sm:h-16 md:h-20 w-auto object-contain flex-shrink-0" 
+          />
+          <div class="flex flex-col items-center text-center justify-center">
+            <span class="text-lg sm:text-xl md:text-2xl font-heading font-semibold text-white tracking-[0.12em] leading-none mb-0.5">
+              GATEIM SRL
+            </span>
+            <span class="text-white text-[0.5rem] sm:text-[0.55rem] md:text-[0.6rem] font-bold tracking-[0.18em] leading-tight uppercase">
+              ASISTENCIA TÉCNICA
+            </span>
+            <span class="text-white text-[0.5rem] sm:text-[0.55rem] md:text-[0.6rem] font-bold tracking-[0.18em] leading-tight uppercase">
+              INDUSTRIAL Y MECÁNICA
+            </span>
+            <div class="w-8 h-[2px] bg-gold mt-1"></div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Right Side (Nav + CTA) -->
+      <div class="hidden lg:flex items-center gap-8">
+        <!-- Desktop Navigation -->
+        <nav class="flex items-center space-x-6 text-xs">
+          {navItems.map(item => {
+            const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+            return (
+              <a 
+                href={item.href} 
+                class={`transition-colors uppercase tracking-widest pb-1 ${
+                  isActive 
+                    ? 'text-white font-bold border-b-2 border-gold' 
+                    : 'text-gray-300 hover:text-white font-medium'
+                }`}
+              >
+                {item.name}
+              </a>
+            );
+          })}
+        </nav>
+
+        <!-- Desktop CTA -->
+        <a href="/contacto" class="bg-gold hover:bg-gold-light text-black font-bold text-xs py-3 px-8 transition-colors rounded-none tracking-widest uppercase">
+          COTIZAR
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="flex items-center lg:hidden">
+        <button id="mobile-menu-btn" type="button" class="text-white hover:text-gold p-2" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="sr-only">Abrir menú principal</span>
+          <Menu id="icon-menu" class="h-8 w-8 block" />
+          <X id="icon-close" class="h-8 w-8 hidden" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="lg:hidden hidden bg-navy border-t border-gray-800" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      {navItems.map(item => {
+        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+        return (
+          <a 
+            href={item.href} 
+            class={`block px-3 py-2 text-base uppercase tracking-wider ${
+              isActive 
+                ? 'text-gold font-bold bg-navy-light' 
+                : 'text-gray-300 hover:text-white font-medium'
+            }`}
+          >
+            {item.name}
+          </a>
+        );
+      })}
+      <a href="/contacto" class="block px-3 py-2 mt-4 text-center text-base font-bold bg-gold text-black rounded-none">COTIZAR</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+
+  if (btn && menu && iconMenu && iconClose) {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', (!isExpanded).toString());
+      menu.classList.toggle('hidden');
+      iconMenu.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+  }
+</script>
